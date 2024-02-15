@@ -92,7 +92,7 @@ dependencies = [
 [[package]]
 name = "lambdaworks-crypto"
 version = "0.5.0"
-source = "git+http://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
+source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
 dependencies = [
  "lambdaworks-math",
  "sha2",
@@ -102,7 +102,7 @@ dependencies = [
 [[package]]
 name = "lambdaworks-groth16"
 version = "0.5.0"
-source = "git+http://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
+source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
 dependencies = [
  "lambdaworks-crypto",
  "lambdaworks-math",
@@ -115,7 +115,7 @@ dependencies = [
 [[package]]
 name = "lambdaworks-math"
 version = "0.5.0"
-source = "git+http://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
+source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
 
 [[package]]
 name = "libc"

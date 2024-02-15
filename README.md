@@ -23,8 +23,10 @@ it requires a trusted setup per program.
 
 ## References
 
+- Intro to QAPs & SNARKs : https://medium.com/@VitalikButerin/quadratic-arithmetic-programs-from-zero-to-hero-f6d558cea649
 - https://eprint.iacr.org/2016/260.pdf?ref=blog.lambdaclass.com
 - https://blog.lambdaclass.com/groth16/
+- Implementation of the above article : https://github.com/lambdaclass/lambdaworks/tree/main/provers/groth16
 - https://www.rareskills.io/post/groth16
 - https://www.zeroknowledgeblog.com/index.php/groth16
 - https://medium.com/ppio/how-to-generate-a-groth16-proof-for-forgery-9f857b0dcafd
