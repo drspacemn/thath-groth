@@ -1,3 +1,6 @@
 [workspace]
-members = ["crates/pairing", "crates/prover", "crates/verifier"]
+members = ["crates/pairing", "crates/setup", "crates/prover", "crates/verifier", "crates/groth16"]
 resolver = "2"
+
+[workspace.dependencies]
+lambdaworks-groth16 = { git = "http://github.com/lambdaclass/lambdaworks.git", branch = "main" }

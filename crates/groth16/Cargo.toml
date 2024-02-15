@@ -1,0 +1,8 @@
+[package]
+name = "groth16"
+version = "0.1.0"
+
+[dependencies]
+lambdaworks-groth16.workspace = true
+#[dependencies]
+#lambdaworks-groth16 = { git = "http://github.com/lambdaclass/lambdaworks.git", branch = "main" }
