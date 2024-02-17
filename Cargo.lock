@@ -3,6 +3,31 @@
 version = 3
 
 [[package]]
+name = "arrayref"
+version = "0.3.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6b4930d2cb77ce62f89ee5d5289b4ac049559b1c45539271f5ed4fdc7db34545"
+
+[[package]]
+name = "arrayvec"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "96d30a06541fbafbc7f82ed10c06164cfbd2c401138f6addd8404629c4b16711"
+
+[[package]]
+name = "blake3"
+version = "1.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0231f06152bf547e9c2b5194f247cd97aacf6dcd8b15d8e5ec0663f64580da87"
+dependencies = [
+ "arrayref",
+ "arrayvec",
+ "cc",
+ "cfg-if",
+ "constant_time_eq",
+]
+
+[[package]]
 name = "block-buffer"
 version = "0.10.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -12,10 +37,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "cc"
+version = "1.0.83"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f1174fb0b6ec23863f8b971027804a42614e347eafb0a95bf0b12cdae21fc4d0"
+dependencies = [
+ "libc",
+]
+
+[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+[[package]]
+name = "constant_time_eq"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f7144d30dcf0fafbce74250a3963025d8d52177934239851c917d29f1df280c2"
 
 [[package]]
 name = "cpufeatures"
@@ -47,6 +87,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "either"
+version = "1.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "11157ac094ffbdde99aa67b23417ebdd801842852b500e395a45a9c0aac03e4a"
+
+[[package]]
 name = "generic-array"
 version = "0.14.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -71,7 +117,18 @@ dependencies = [
 name = "groth16"
 version = "0.1.0"
 dependencies = [
+ "blake3",
+ "itertools",
  "lambdaworks-groth16",
+]
+
+[[package]]
+name = "itertools"
+version = "0.12.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ba291022dbbd398a455acf126c1e341954079855bc60dfdda641363bd6922569"
+dependencies = [
+ "either",
 ]
 
 [[package]]
@@ -92,7 +149,7 @@ dependencies = [
 [[package]]
 name = "lambdaworks-crypto"
 version = "0.5.0"
-source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
+source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#c7ac1bfe45167661bc9e36d3809eea88da1a1428"
 dependencies = [
  "lambdaworks-math",
  "sha2",
@@ -102,7 +159,7 @@ dependencies = [
 [[package]]
 name = "lambdaworks-groth16"
 version = "0.5.0"
-source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
+source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#c7ac1bfe45167661bc9e36d3809eea88da1a1428"
 dependencies = [
  "lambdaworks-crypto",
  "lambdaworks-math",
@@ -115,7 +172,7 @@ dependencies = [
 [[package]]
 name = "lambdaworks-math"
 version = "0.5.0"
-source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#3211249e69b443ad4e8d34548b1665612a40c3a4"
+source = "git+https://github.com/lambdaclass/lambdaworks.git?branch=main#c7ac1bfe45167661bc9e36d3809eea88da1a1428"
 
 [[package]]
 name = "libc"
@@ -249,9 +306,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.48"
+version = "2.0.49"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0f3531638e407dfc0814761abb7c00a5b54992b849452a0646b7f65c9f770f3f"
+checksum = "915aea9e586f80826ee59f8453c1101f9d1c4b3964cd2460185ee8e299ada496"
 dependencies = [
  "proc-macro2",
  "quote",
