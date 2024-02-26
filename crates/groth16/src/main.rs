@@ -52,7 +52,7 @@ fn another_qap() -> QAP {
     // ~out = sym_3 + 3
     //
     // Variable mapping:       ~one,   x, ~out, sym_1,   y, sym_2, sym_3
-    // Example solution vec : [   1,   2,   13,    4,   3,     6,    10]    
+    // Example solution vec : [   1,   2,   13,    4,   3,     6,    10]
     //
     // Gates :
     // 1. sym_1 = x*x
@@ -122,7 +122,6 @@ fn another_qap() -> QAP {
             ["0", "0", "0", "0"],
             ["0", "1", "0", "0"],
             ["0", "0", "1", "0"],
-
         ],
     ]
     .map(|matrix| matrix.map(|row| row.map(FrElement::from_hex_unchecked).to_vec()));
@@ -146,26 +145,29 @@ fn main() {
     println!("Generated keys for Vitalik QAP :");
     //TODO: pass as a reference?
     println!("{}", print_utils::prover_key_to_string(&prover_key, 2));
-    println!("{}", print_utils::verifying_key_to_string(&verifying_key, 2));
+    println!(
+        "{}",
+        print_utils::verifying_key_to_string(&verifying_key, 2)
+    );
 
     for witness in [
         //  1      x     out    x*x     x**3   x**3+x
         ["0x1", "0x3", "0x23", "0x9", "0x1b", "0x1e"], // x**3 + x + 5 = 35 ( x = 3 )
-        ["0x1", "0x2", "0xf", "0x4", "0x8", "0xa"], // x**3 + x + 5 = 15 ( x = 2 )
-        ["0x1", "0x1", "0x7", "0x1", "0x1", "0x2"], // x**3 + x + 5 = 7 ( x = 1 )
-
+        ["0x1", "0x2", "0xf", "0x4", "0x8", "0xa"],    // x**3 + x + 5 = 15 ( x = 2 )
+        ["0x1", "0x1", "0x7", "0x1", "0x1", "0x2"],    // x**3 + x + 5 = 7 ( x = 1 )
         ["0x1", "0x3", "0x24", "0x9", "0x1b", "0x1e"], // x**3 + x + 5 = 36 ( x = 3 ) - wrong
     ] {
         println!("Proof for witness = {:?}", witness);
-        let witness = witness
-            .map(FrElement::from_hex_unchecked)
-            .to_vec();
+        let witness = witness.map(FrElement::from_hex_unchecked).to_vec();
 
         let serialized_proof =
             lambdaworks_groth16::Prover::prove(&witness, &qap, &prover_key).serialize();
         let deserialized_proof =
             lambdaworks_groth16::Proof::deserialize(&serialized_proof).unwrap();
-        println!("Serialized proof: 0x{:02X}", serialized_proof.iter().format(""));
+        println!(
+            "Serialized proof: 0x{:02X}",
+            serialized_proof.iter().format("")
+        );
 
         let accept = lambdaworks_groth16::verify(
             &verifying_key,
@@ -175,7 +177,6 @@ fn main() {
         println!("Verified as : {}\n", accept);
     }
 
-
     // Another test
     println!("Another test");
     println!("------------");
@@ -183,7 +184,10 @@ fn main() {
     let (prover_key, verifying_key) = lambdaworks_groth16::setup(&qap);
     println!("Generated keys for Another QAP :");
     println!("{}", print_utils::prover_key_to_string(&prover_key, 2));
-    println!("{}", print_utils::verifying_key_to_string(&verifying_key, 2));
+    println!(
+        "{}",
+        print_utils::verifying_key_to_string(&verifying_key, 2)
+    );
 
     for witness in [
         // Variable mapping:       ~one,   x, ~out, sym_1,   y, sym_2, sym_3
@@ -191,19 +195,19 @@ fn main() {
         ["0x1", "0x2", "0xd", "0x4", "0x3", "0x6", "0xa"], // x^2 + 2*y + 3 = 13 ( x = 2, y = 3 )
         ["0x1", "0x3", "0x16", "0x9", "0x5", "0xa", "0x13"], // x^2 + 2*y + 3 = 22 ( x = 3, y = 5 )
         ["0x1", "0x1", "0x6", "0x1", "0x1", "0x2", "0x3"], // x^2 + 2*y + 3 = 6 ( x = 1, y = 1 )
-
         ["0x1", "0x2", "0xe", "0x4", "0x3", "0x6", "0xa"], // x^2 + 2*y + 3 = 14 ( x = 2, y = 3 ) - wrong
     ] {
         println!("Proof for witness = {:?}", witness);
-        let witness = witness
-            .map(FrElement::from_hex_unchecked)
-            .to_vec();
+        let witness = witness.map(FrElement::from_hex_unchecked).to_vec();
 
         let serialized_proof =
             lambdaworks_groth16::Prover::prove(&witness, &qap, &prover_key).serialize();
         let deserialized_proof =
             lambdaworks_groth16::Proof::deserialize(&serialized_proof).unwrap();
-        println!("Serialized proof: 0x{:02X}", serialized_proof.iter().format(""));
+        println!(
+            "Serialized proof: 0x{:02X}",
+            serialized_proof.iter().format("")
+        );
 
         let accept = lambdaworks_groth16::verify(
             &verifying_key,

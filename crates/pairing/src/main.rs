@@ -1,3 +1,5 @@
+mod dumb_curve;
+
 fn main() {
-    println!("pairing stub");
+    dumb_curve::demo();
 }
